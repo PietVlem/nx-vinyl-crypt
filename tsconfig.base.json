@@ -15,14 +15,16 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@org/api/products": ["libs/api/products/src/index.ts"],
-      "@org/models": ["libs/shared/models/src/index.ts"],
-      "@org/shop/data": ["libs/shop/data/src/index.ts"],
-      "@org/shop/feature-product-detail": [
-        "libs/shop/feature-product-detail/src/index.ts"
-      ],
-      "@org/shop/feature-products": ["libs/shop/feature-products/src/index.ts"],
-      "@org/shop/shared-ui": ["libs/shop/shared-ui/src/index.ts"]
+      "@server": ["apps/api/src/index.ts"],
+      "@server/prisma-client": ["apps/api/generated/prisma/client.ts"],
+
+      "@shared/*": ["apps/shop/src/app/shared/*"],
+      "@core/*": ["apps/shop/src/app/core/*"],
+      "@features/*": ["apps/shop/src/app/features/*"],
+      "@api" : ["apps/shop/src/app/api/index.ts"],
+      "@layouts": ["apps/shop/src/app/shared/layouts/index.ts"],
+      "@components": ["apps/shop/src/app/shared/components/index.ts"],
+      "@app/routes": ["apps/shop/src/app/app.routes.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

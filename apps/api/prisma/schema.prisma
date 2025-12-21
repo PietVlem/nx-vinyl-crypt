@@ -1,0 +1,192 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String            @id @default(uuid())
+  email     String            @unique
+  name      String?
+  auth0Id   String            @unique
+  userVinyls UserVinyl[]
+  wishlist  Wishlist[]
+  shares    CollectionShare[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+}
+
+model VinylRecord {
+  id           String         @id @default(uuid())
+  title        String
+  genreId      String?
+  genre        Genre?         @relation(fields: [genreId], references: [id])
+  styleId      String?
+  style        Style?         @relation(fields: [styleId], references: [id])
+  artistId     String?
+  artist       Artist?        @relation(fields: [artistId], references: [id])
+  variants     VinylVariant[]
+  wishlist     Wishlist[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model VinylVariant {
+  id           String        @id @default(uuid())
+  vinylId      String
+  vinyl        VinylRecord   @relation(fields: [vinylId], references: [id], onDelete: Cascade)
+  releaseDate  DateTime
+  coverImage   String?
+  recordColor  String?
+  userVinyls   UserVinyl[]
+  tracks       Track[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model UserVinyl {
+  id           String       @id @default(uuid())
+  userId       String
+  variantId    String
+  condition    Condition?
+  purchaseDate DateTime?
+  notes        String?
+  user         User         @relation(fields: [userId], references: [id])
+  variant      VinylVariant @relation(fields: [variantId], references: [id], onDelete: Cascade)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  
+  @@unique([userId, variantId])
+}
+
+model Genre {
+  id           String        @id @default(uuid())
+  name         String        @unique
+  vinylRecords VinylRecord[]
+  artists      Artist[]
+}
+
+model Style {
+  id        String        @id @default(uuid())
+  name      String        @unique
+  vinyls    VinylRecord[]
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model Track {
+  id           String       @id @default(uuid())
+  title        String
+  durationInSeconds  Int?
+  side         String?
+  mixedBy      String?
+  engineeredBy String?
+  writtenBy    String?
+  variantId    String
+  variant      VinylVariant @relation(fields: [variantId], references: [id])
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model Artist {
+  id           String         @id @default(uuid())
+  bio          String?
+  genreId      String?
+  genre        Genre?         @relation(fields: [genreId], references: [id])
+  country      String?
+  type         ArtistType     @default(SOLO)
+  formedDate   DateTime?      
+  disbandDate  DateTime?      
+  albums       VinylRecord[]
+  aliases      ArtistAlias[]
+  memberships  ArtistMember[] 
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model Person {
+  id           String         @id @default(uuid())
+  name         String
+  birthDate    DateTime?
+  deathDate    DateTime?
+  country      String?
+  bio          String?
+  memberships  ArtistMember[] 
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model ArtistMember {
+  id           String    @id @default(uuid())
+  artistId     String
+  personId     String
+  role         String?   
+  joinDate     DateTime?
+  leaveDate    DateTime?
+  foundingMember    Boolean   @default(false) 
+  artist       Artist    @relation(fields: [artistId], references: [id], onDelete: Cascade)
+  person       Person    @relation(fields: [personId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  
+  @@unique([artistId, personId, joinDate])
+}
+
+model ArtistAlias {
+  id        String   @id @default(uuid())
+  name      String
+  isPrimary Boolean  @default(false)
+  artistId  String
+  artist    Artist   @relation(fields: [artistId], references: [id], onDelete: Cascade)
+}
+
+model Wishlist {
+  id      String      @id @default(uuid())
+  userId  String
+  vinylId String
+  user    User        @relation(fields: [userId], references: [id])
+  vinyl   VinylRecord @relation(fields: [vinylId], references: [id])
+}
+
+model CollectionShare {
+  id         String    @id @default(uuid())
+  name       String
+  userId     String
+  shareToken String    @unique
+  password   String?
+  shareType  ShareType
+  user       User      @relation(fields: [userId], references: [id])
+  createdAt  DateTime  @default(now())
+  expiresAt  DateTime?
+}
+
+enum ArtistType {
+  SOLO
+  BAND
+  ORCHESTRA
+  CHOIR
+  VARIOUS
+}
+
+enum ShareType {
+  wishlist
+  collection
+  both
+}
+
+enum Condition {
+  mint
+  very_good
+  good
+  fair
+  poor
+}

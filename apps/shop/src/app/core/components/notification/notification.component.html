@@ -1,0 +1,42 @@
+<div
+  aria-live="assertive"
+  class="pointer-events-none inset-0 flex items-end sm:items-start"
+>
+  <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
+    <div
+      class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-app-primary shadow-lg ring-1 ring-black/5"
+    >
+      <div class="p-4">
+        <div class="flex items-start">
+          <div class="shrink-0">
+            @if(notification().type === 'success') {
+            <ng-icon
+              size="24"
+              class="!text-green-400"
+              name="phosphorCheckCircle"
+            />
+            } @else {
+            <ng-icon size="24" class="!text-red-400" name="phosphorXCircle" />
+            }
+          </div>
+          <div class="ml-3 w-0 flex-1 pt-0.5">
+            <p class="text-sm font-medium text-white">{{ notification().title }}</p>
+            <p class="mt-1 text-sm text-gray-400">
+              {{ notification().text }}
+            </p>
+          </div>
+          <div class="ml-4 flex shrink-0">
+            <button
+              (click)="remove()"
+              type="button"
+              class="inline-flex rounded-md focus:outline-none focus:ring-1 focus:ring-white focus:ring-offset-1 cursor-pointer p-[2px]"
+            >
+              <span class="sr-only">Close</span>
+              <ng-icon class="!text-white" size="16" name="phosphorX" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

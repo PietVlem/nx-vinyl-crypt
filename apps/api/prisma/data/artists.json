@@ -1,0 +1,744 @@
+[
+  {
+    "bio": "English rock band formed in Liverpool in 1960.",
+    "country": "UK",
+    "birthDate": "1960-01-01T00:00:00.000Z",
+    "deathDate": null,
+    "aliases": [
+      {
+        "name": "The Beatles",
+        "isPrimary": true
+      },
+      {
+        "name": "Fab Four",
+        "isPrimary": false
+      }
+    ],
+    "records": [
+      {
+        "title": "Abbey Road",
+        "genre": "Rock",
+        "style": "Classic Rock",
+        "releaseDate": "1969-09-26T00:00:00.000Z",
+        "variants": [
+          {
+            "isPrimary": true,
+            "releaseDate": "1969-09-26T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/M2yc5OJZPdVoDm2_UlRRXuDlDguamLLSdnbziNmZoQI/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI2MDc0/MjQtMTYzMDYwMTA4/Ny0xMTk5LmpwZWc.jpeg",
+            "recordColor": "Black",
+            "tracks": [
+              {
+                "side": "A",
+                "title": "Come Together",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "A", 
+                "title": "Something",
+                "writtenBy": "George Harrison"
+              },
+              {
+                "side": "A",
+                "title": "Maxwell's Silver Hammer",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "A",
+                "title": "Oh! Darling",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "A",
+                "title": "Octopus's Garden",
+                "writtenBy": "Ringo Starr"
+              },
+              {
+                "side": "A",
+                "title": "I Want You (She's So Heavy)",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Here Comes the Sun",
+                "writtenBy": "George Harrison"
+              },
+              {
+                "side": "B",
+                "title": "Because",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "You Never Give Me Your Money",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Sun King",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Mean Mr. Mustard",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Polythene Pam",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "She Came in Through the Bathroom Window",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Golden Slumbers",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Carry That Weight",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "The End",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Her Majesty",
+                "writtenBy": "Lennon-McCartney"
+              }
+            ]
+          },
+          {
+            "isPrimary": false,
+            "releaseDate": "2019-09-27T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/M2yc5OJZPdVoDm2_UlRRXuDlDguamLLSdnbziNmZoQI/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI2MDc0/MjQtMTYzMDYwMTA4/Ny0xMTk5LmpwZWc.jpeg",
+            "recordColor": "White",
+            "tracks": []
+          }
+        ]
+      },
+      {
+        "title": "Sgt. Pepper's Lonely Hearts Club Band",
+        "genre": "Rock",
+        "style": "Psychedelic Rock",
+        "releaseDate": "1967-05-26T00:00:00.000Z",
+        "variants": [
+          {
+            "isPrimary": true,
+            "releaseDate": "1967-05-26T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/khXrWmxe4oxYWlYFZCXVxnA4ku8j1fPyGw6HM4m2Eec/rs:fit/g:sm/q:90/h:600/w:598/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM1NTg3/OTItMTM2NTM0ODYz/NS05MTY2LmpwZWc.jpeg",
+            "recordColor": "Black",
+            "tracks": [
+              {
+                "side": "A",
+                "title": "Sgt. Pepper's Lonely Hearts Club Band",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "A",
+                "title": "With a Little Help from My Friends",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "A",
+                "title": "Lucy in the Sky with Diamonds",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "A",
+                "title": "Getting By",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "A",
+                "title": "Fixing a Hole",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "A",
+                "title": "She's Leaving Home",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "A",
+                "title": "Being for the Benefit of Mr. Kite!",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Within You Without You",
+                "writtenBy": "George Harrison"
+              },
+              {
+                "side": "B",
+                "title": "When I'm Sixty-Four",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Lovely Rita",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Good Morning Good Morning",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "Sgt. Pepper's Lonely Hearts Club Band (Reprise)",
+                "writtenBy": "Lennon-McCartney"
+              },
+              {
+                "side": "B",
+                "title": "A Day in the Life",
+                "writtenBy": "Lennon-McCartney"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bio": "American singer, songwriter, and dancer.",
+    "country": "USA",
+    "birthDate": "1958-08-29T00:00:00.000Z",
+    "deathDate": "2009-06-25T00:00:00.000Z",
+    "aliases": [
+      {
+        "name": "Michael Jackson",
+        "isPrimary": true
+      },
+      {
+        "name": "King of Pop",
+        "isPrimary": false
+      }
+    ],
+    "records": [
+      {
+        "title": "Thriller",
+        "genre": "Pop",
+        "style": "Funk",
+        "releaseDate": "1982-11-30T00:00:00.000Z",
+        "variants": [
+          {
+            "isPrimary": true,
+            "releaseDate": "1982-11-30T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/dWe2AyguSxJpaaEWbK_mVLL3zs2ejuta0sJCx5BvS8o/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI5MTEy/OTMtMTU5NDI0NTgx/Mi03OTMxLmpwZWc.jpeg",
+            "recordColor": "Black",
+            "tracks": [
+              {
+                "side": "A",
+                "title": "Wanna Be Startin' Somethin'",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "A",
+                "title": "Baby Be Mine",
+                "writtenBy": "Rod Temperton"
+              },
+              {
+                "side": "A",
+                "title": "The Girl Is Mine",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "A",
+                "title": "Thriller",
+                "writtenBy": "Rod Temperton"
+              },
+              {
+                "side": "B",
+                "title": "Beat It",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "B",
+                "title": "Billie Jean",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "B",
+                "title": "Human Nature",
+                "writtenBy": "Steve Porcaro, John Bettis"
+              },
+              {
+                "side": "B",
+                "title": "P.Y.T. (Pretty Young Thing)",
+                "writtenBy": "Quincy Jones, James Ingram"
+              },
+              {
+                "side": "B",
+                "title": "The Lady in My Life",
+                "writtenBy": "Rod Temperton"
+              }
+            ]
+          },
+          {
+            "isPrimary": false,
+            "releaseDate": "2008-02-11T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/dWe2AyguSxJpaaEWbK_mVLL3zs2ejuta0sJCx5BvS8o/rs:fit/g:sm/q:90/h:600/w:597/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI5MTEy/OTMtMTU5NDI0NTgx/Mi03OTMxLmpwZWc.jpeg",
+            "recordColor": "Red",
+            "tracks": []
+          }
+        ]
+      },
+      {
+        "title": "Bad",
+        "genre": "Pop",
+        "style": "Pop Rock",
+        "releaseDate": "1987-08-31T00:00:00.000Z",
+        "variants": [
+          {
+            "isPrimary": true,
+            "releaseDate": "1987-08-31T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/W4bMsFIhfx4xQgX4L1lD7PwtYyaqMgaC30DmSSVu9E4/rs:fit/g:sm/q:90/h:600/w:598/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ1OTYw/Ni0xNDUwMzg5NDI1/LTg4NTIuanBlZw.jpeg",
+            "recordColor": "Black",
+            "tracks": [
+              {
+                "side": "A",
+                "title": "Bad",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "A",
+                "title": "The Way You Make Me Feel",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "A",
+                "title": "Speed Demon",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "A",
+                "title": "Liberian Girl",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "A",
+                "title": "Just Good Friends",
+                "writtenBy": "Terry Britten, Graham Lyle"
+              },
+              {
+                "side": "B",
+                "title": "Another Part of Me",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "B",
+                "title": "Man in the Mirror",
+                "writtenBy": "Glen Ballard, Siedah Garrett"
+              },
+              {
+                "side": "B",
+                "title": "I Just Can't Stop Loving You",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "B",
+                "title": "Dirty Diana",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "B",
+                "title": "Smooth Criminal",
+                "writtenBy": "Michael Jackson"
+              },
+              {
+                "side": "B",
+                "title": "Leave Me Alone",
+                "writtenBy": "Michael Jackson"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bio": "Swedish pop group formed in Stockholm in 1972.",
+    "country": "Sweden",
+    "birthDate": "1972-01-01T00:00:00.000Z",
+    "deathDate": null,
+    "aliases": [
+      {
+        "name": "ABBA",
+        "isPrimary": true
+      }
+    ],
+    "records": [
+      {
+        "title": "ABBA Gold: Greatest Hits",
+        "genre": "Pop",
+        "style": "Europop",
+        "releaseDate": "1992-09-21T00:00:00.000Z",
+        "variants": [
+          {
+            "isPrimary": true,
+            "releaseDate": "1992-09-21T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/5L6Tf0su42j1X4_C0RwXU4f0mhHcaWH_jSXdCsTY2aY/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyMTg4/OTAtMTUzMzY2MjU1/Ny0xNjkyLmpwZWc.jpeg",
+            "recordColor": "Gold",
+            "tracks": [
+              {
+                "side": "A",
+                "title": "Dancing Queen",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus, Stig Anderson"
+              },
+              {
+                "side": "A",
+                "title": "Knowing Me, Knowing You",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus, Stig Anderson"
+              },
+              {
+                "side": "A",
+                "title": "Take a Chance on Me",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "A",
+                "title": "Mamma Mia",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus, Stig Anderson"
+              },
+              {
+                "side": "A",
+                "title": "Lay All Your Love on Me",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "A",
+                "title": "Super Trouper",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "A",
+                "title": "I Have a Dream",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "A",
+                "title": "The Winner Takes It All",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "A",
+                "title": "Money, Money, Money",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "S.O.S.",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus, Stig Anderson"
+              },
+              {
+                "side": "B",
+                "title": "Chiquitita",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "Fernando",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus, Stig Anderson"
+              },
+              {
+                "side": "B",
+                "title": "Voulez-Vous",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "Gimme! Gimme! Gimme! (A Man After Midnight)",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "Does Your Mother Know",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "One of Us",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "The Name of the Game",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus, Stig Anderson"
+              },
+              {
+                "side": "B",
+                "title": "Thank You for the Music",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "Waterloo",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus, Stig Anderson"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Arrival",
+        "genre": "Pop",
+        "style": "Disco",
+        "releaseDate": "1976-10-11T00:00:00.000Z",
+        "variants": [
+          {
+            "isPrimary": true,
+            "releaseDate": "1976-10-11T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/5RDcR1itMpIuVXFqkg0BtvrWvWopRqpB1Cf7mLjlHwU/rs:fit/g:sm/q:90/h:600/w:598/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTY3NzYy/NzUtMTQyNjM5ODI5/OS01MzY0LmpwZWc.jpeg",
+            "recordColor": "Black",
+            "tracks": [
+              {
+                "side": "A",
+                "title": "When I Kissed the Teacher",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "A",
+                "title": "Dancing Queen",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus, Stig Anderson"
+              },
+              {
+                "side": "A",
+                "title": "Dum Dum Diddle",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "A",
+                "title": "My Love, My Life",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus, Stig Anderson"
+              },
+              {
+                "side": "B",
+                "title": "Knowing Me, Knowing You",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus, Stig Anderson"
+              },
+              {
+                "side": "B",
+                "title": "Money, Money, Money",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "That's Me",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "Why Did It Have to Be Me",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "Tiger",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              },
+              {
+                "side": "B",
+                "title": "Arrival",
+                "writtenBy": "Benny Andersson, Björn Ulvaeus"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bio": "English rock band formed in London in 1970.",
+    "country": "UK",
+    "birthDate": "1970-01-01T00:00:00.000Z",
+    "deathDate": null,
+    "aliases": [
+      {
+        "name": "Queen",
+        "isPrimary": true
+      }
+    ],
+    "records": [
+      {
+        "title": "A Night at the Opera",
+        "genre": "Rock",
+        "style": "Progressive Rock",
+        "releaseDate": "1975-11-21T00:00:00.000Z",
+        "variants": [
+          {
+            "isPrimary": true,
+            "releaseDate": "1975-11-21T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/2GXnNYolz0ciUnj8-ycSwQ8Uuy0Qu7LCfiZivZ0p_bo/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTYxMjc4/MC0xNTQxMzY3MTQ1/LTIxMjcuanBlZw.jpeg",
+            "recordColor": "Black",
+            "tracks": [
+              {
+                "side": "A",
+                "title": "Death on Two Legs (Dedicated to...)",
+                "writtenBy": "Freddie Mercury"
+              },
+              {
+                "side": "A",
+                "title": "Lazing on a Sunday Afternoon",
+                "writtenBy": "Freddie Mercury"
+              },
+              {
+                "side": "A",
+                "title": "I'm in Love with My Car",
+                "writtenBy": "Roger Taylor"
+              },
+              {
+                "side": "A",
+                "title": "You're My Best Friend",
+                "writtenBy": "John Deacon"
+              },
+              {
+                "side": "A",
+                "title": "'39",
+                "writtenBy": "Brian May"
+              },
+              {
+                "side": "A",
+                "title": "Sweet Lady",
+                "writtenBy": "Brian May"
+              },
+              {
+                "side": "A",
+                "title": "Seaside Rendezvous",
+                "writtenBy": "Freddie Mercury"
+              },
+              {
+                "side": "B",
+                "title": "The Prophet's Song",
+                "writtenBy": "Brian May"
+              },
+              {
+                "side": "B",
+                "title": "Love of My Life",
+                "writtenBy": "Freddie Mercury"
+              },
+              {
+                "side": "B",
+                "title": "Good Company",
+                "writtenBy": "Brian May"
+              },
+              {
+                "side": "B",
+                "title": "Bohemian Rhapsody",
+                "writtenBy": "Freddie Mercury"
+              },
+              {
+                "side": "B",
+                "title": "God Save the Queen",
+                "writtenBy": "Traditional"
+              }
+            ]
+          },
+          {
+            "isPrimary": false,
+            "releaseDate": "2011-11-21T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/8DuLRZDOQgxhVq0375VGK0LhPYU98f8DX78fjmTL9gw/rs:fit/g:sm/q:90/h:569/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU5NjIy/MjctMTQwNzQ5ODEw/OC00NDk5LmpwZWc.jpeg",
+            "recordColor": "Purple",
+            "tracks": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "bio": "American rock band formed in Seattle in 1987.",
+    "country": "USA",
+    "birthDate": "1987-01-01T00:00:00.000Z",
+    "deathDate": null,
+    "aliases": [
+      {
+        "name": "Nirvana",
+        "isPrimary": true
+      }
+    ],
+    "records": [
+      {
+        "title": "Nevermind",
+        "genre": "Rock",
+        "style": "Grunge",
+        "releaseDate": "1991-09-24T00:00:00.000Z",
+        "variants": [
+          {
+            "isPrimary": true,
+            "releaseDate": "1991-09-24T00:00:00.000Z",
+            "coverImage": "https://i.discogs.com/XoAXkLe03Vk0Kt-oQqw7V9uW5nBzQdNvZd0zar5mOiQ/rs:fit/g:sm/q:90/h:592/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM2NzA4/NC0xMjYzMDk1NTUz/LmpwZWc.jpeg",
+            "recordColor": "Black",
+            "tracks": [
+              {
+                "side": "A",
+                "title": "Smells Like Teen Spirit",
+                "writtenBy": "Kurt Cobain, Krist Novoselic, Dave Grohl"
+              },
+              {
+                "side": "A",
+                "title": "In Bloom",
+                "writtenBy": "Kurt Cobain"
+              },
+              {
+                "side": "A",
+                "title": "Come as You Are",
+                "writtenBy": "Kurt Cobain"
+              },
+              {
+                "side": "A",
+                "title": "Breed",
+                "writtenBy": "Kurt Cobain"
+              },
+              {
+                "side": "A",
+                "title": "Lithium",
+                "writtenBy": "Kurt Cobain"
+              },
+              {
+                "side": "A",
+                "title": "Polly",
+                "writtenBy": "Kurt Cobain"
+              },
+              {
+                "side": "B",
+                "title": "Territorial Pissings",
+                "writtenBy": "Kurt Cobain, Chet Powers"
+              },
+              {
+                "side": "B",
+                "title": "Drain You",
+                "writtenBy": "Kurt Cobain"
+              },
+              {
+                "side": "B",
+                "title": "Lounge Act",
+                "writtenBy": "Kurt Cobain"
+              },
+              {
+                "side": "B",
+                "title": "Stay Away",
+                "writtenBy": "Kurt Cobain"
+              },
+              {
+                "side": "B",
+                "title": "On a Plain",
+                "writtenBy": "Kurt Cobain"
+              },
+              {
+                "side": "B",
+                "title": "Something in the Way",
+                "writtenBy": "Kurt Cobain"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

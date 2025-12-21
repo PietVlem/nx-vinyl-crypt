@@ -1,0 +1,54 @@
+<td class="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
+	<div class="flex items-center">
+		<div class="size-11 shrink-0">
+			@if (record().coverImage) {
+				<img
+					class="size-11 rounded"
+					src="{{ record().coverImage }}"
+					alt="record-image"
+				/>
+			} @else {
+				<div class="size-11 grid rounded bg-gray-100">
+					<ng-icon
+						size="24"
+						class="place-self-center"
+						name="phosphorVinylRecord"
+					/>
+				</div>
+			}
+		</div>
+		<div class="ml-4">
+			<div class="font-medium text-gray-900">
+				{{ record().vinylTitle }}
+			</div>
+			<div class="mt-1 text-gray-500">
+				{{ record().artistName ?? 'Unknown artist' }}
+			</div>
+		</div>
+	</div>
+</td>
+<td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+	<div class="text-gray-900">Color: {{ record().recordColor }}</div>
+	<div class="mt-1 text-gray-500">released: {{ record().releaseDate }}</div>
+</td>
+<td class="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
+	<div class="flex gap-1 items-center">
+		@if (record().genre; as genreName) {
+			<app-badge
+				[label]="genreName"
+				color="green"
+			/>
+		}
+		@if (record().style; as styleName) {
+			<app-badge
+				[label]="styleName"
+				color="green"
+			/>
+		}
+	</div>
+</td>
+<td class="relative whitespace-nowrap py-5 pl-3 pr-4 sm:pr-0">
+	<div class="flex justify-end gap-2">
+		<ng-content />
+	</div>
+</td>

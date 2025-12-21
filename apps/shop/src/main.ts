@@ -1,5 +1,16 @@
+import { mergeApplicationConfig } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideAuth0 } from '@auth0/auth0-angular';
 import { App } from './app/app';
+import { appConfig } from './app/app.config';
+import { environment } from './environments/environment';
 
-bootstrapApplication(App, appConfig).catch((err) => console.error(err));
+const auth0Config = mergeApplicationConfig(appConfig, {
+  providers: [
+    provideAuth0({
+      ...environment.auth0,
+    })
+  ]
+});
+
+bootstrapApplication(App, auth0Config).catch((err) => console.error(err));

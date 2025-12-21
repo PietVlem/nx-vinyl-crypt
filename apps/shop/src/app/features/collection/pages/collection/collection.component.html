@@ -1,0 +1,78 @@
+<app-title-text-action
+	title="Vinyl records"
+	description="A list of all the Vinyl records in your collection."
+>
+	<button
+		appButtonPrimary
+		type="button"
+		(click)="OpenAddRecordDrawer()"
+	>
+		<ng-icon
+			name="phosphorMusicNotesPlus"
+			size="16"
+		/>
+		<span>Add vinyl record</span>
+	</button>
+</app-title-text-action>
+
+@if (userVinylRecordsQuery.isLoading()) {
+	loading...
+} @else {
+	@if (userVinylRecordsQuery.data()?.meta?.totalRecords === 0) {
+		<app-empty-state
+			title="No vinyl records found"
+			description="You don't have any vinyl records in your collection yet."
+			buttonText="Add vinyl record"
+			iconName="phosphorVinylRecord"
+			(create)="OpenAddRecordDrawer()"
+		/>
+	} @else {
+		<div class="mt-8 flow-root">
+			<div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+				<div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+					<app-base-content-table>
+						@for (record of userVinylRecordsQuery.data()?.data; track record.id) {
+							<tr
+								app-record-row
+								[record]="record"
+							>
+								<button
+									(click)="OpenEditRecordDrawer(record.id)"
+									type="button"
+									class="rounded-md bg-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 size-8 grid cursor-pointer"
+								>
+									<ng-icon
+										class="place-self-center"
+										size="16"
+										name="phosphorPencil"
+									/>
+								</button>
+								<button
+									(click)="deleteUserVinylRecord(record.id)"
+									type="button"
+									class="rounded-md bg-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 size-8 grid cursor-pointer"
+								>
+									<ng-icon
+										class="place-self-center"
+										size="16"
+										name="phosphorTrash"
+									/>
+								</button>
+							</tr>
+						}
+					</app-base-content-table>
+				</div>
+			</div>
+		</div>
+		@let pageMetaData = userVinylRecordsQuery.data()?.meta;
+		@if (pageMetaData && pageMetaData.totalRecords > pageMetaData.pageSize) {
+			<app-pagination
+				[currentPage]="pageMetaData?.currentPage ?? 1"
+				[totalPages]="pageMetaData?.totalPages ?? 1"
+				[totalRecords]="pageMetaData?.totalRecords ?? 0"
+				[pageSize]="pageMetaData?.pageSize ?? 50"
+				(updatePage)="goToPage($event)"
+			/>
+		}
+	}
+}
