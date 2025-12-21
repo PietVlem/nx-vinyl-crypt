@@ -16,15 +16,14 @@
     "baseUrl": ".",
     "paths": {
       "@server": ["apps/api/src/index.ts"],
-      "@server/prisma-client": ["apps/api/generated/prisma/client.ts"],
 
-      "@shared/*": ["apps/shop/src/app/shared/*"],
-      "@core/*": ["apps/shop/src/app/core/*"],
-      "@features/*": ["apps/shop/src/app/features/*"],
-      "@api" : ["apps/shop/src/app/api/index.ts"],
-      "@layouts": ["apps/shop/src/app/shared/layouts/index.ts"],
-      "@components": ["apps/shop/src/app/shared/components/index.ts"],
-      "@app/routes": ["apps/shop/src/app/app.routes.ts"],
+      "@client/shared/*": ["apps/client/src/app/shared/*"],
+      "@client/core/*": ["apps/client/src/app/core/*"],
+      "@client/features/*": ["apps/client/src/app/features/*"],
+      "@client/api" : ["apps/client/src/app/api/index.ts"],
+      "@client/layouts": ["apps/client/src/app/shared/layouts/index.ts"],
+      "@client/components": ["apps/client/src/app/shared/components/index.ts"],
+      "@client/routes": ["apps/client/src/app/app.routes.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

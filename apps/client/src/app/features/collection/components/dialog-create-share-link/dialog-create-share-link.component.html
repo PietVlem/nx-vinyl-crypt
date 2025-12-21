@@ -1,0 +1,189 @@
+<div
+  class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left sm:p-6"
+>
+  <div class="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
+    <button
+      (click)="ref.close()"
+      type="button"
+      class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 cursor-pointer"
+    >
+      <span class="sr-only">Close</span>
+      <ng-icon name="phosphorX" size="20" />
+    </button>
+  </div>
+  <div>
+    <h3 class="text-base font-semibold text-gray-900" id="modal-title">
+      Create a sharable link
+    </h3>
+    <div class="mt-2">
+      <p class="text-sm text-gray-500">
+        Create a sharable link to your collection, wishlist or both. You can
+        share this link with anyone, and they will be able to view your
+        collection. This can be with or without a password.
+      </p>
+      <form class="mt-6 mb-12 space-y-8" [formGroup]="createShareLinkForm">
+        <div>
+          <label for="email" class="block text-sm/6 font-medium text-gray-900"
+            >Name *</label
+          >
+          <div class="mt-2">
+            <input appInput formControlName="name" />
+          </div>
+        </div>
+
+        <fieldset aria-label="share type">
+          <legend class="text-sm/6 font-semibold text-gray-900">
+            What do you want to share?
+          </legend>
+          <div class="space-y-5 mt-2.5">
+            @for(shareType of shareTypeOptions(); track $index) {
+            <div class="relative flex items-start">
+              <div class="flex h-6 items-center">
+                <input
+                  [id]="shareType.value"
+                  [value]="shareType.value"
+                  aria-describedby="small-description"
+                  name="shareType"
+                  type="radio"
+                  class="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-app-primary checked:bg-app-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-app-primary disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
+                  formControlName="shareType"
+                />
+              </div>
+              <div class="ml-3 text-sm/6">
+                <label
+                  [for]="shareType.value"
+                  class="font-medium text-gray-900"
+                  >{{ shareType.label }}</label
+                >
+                <p id="small-description" class="text-gray-500">
+                  {{ shareType.description }}
+                </p>
+              </div>
+            </div>
+            }
+          </div>
+        </fieldset>
+        <div class="flex flex-col gap-6">
+          <div class="flex items-center">
+            <button
+              type="button"
+              class="group relative inline-flex h-5 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-app-primary focus:ring-offset-2"
+              role="switch"
+              aria-checked="false"
+              (click)="togglePasswordField()"
+            >
+              <span class="sr-only">Use setting</span>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute size-full rounded-md bg-white"
+              ></span>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out"
+                [class.bg-app-primary]="passwordFieldShown()"
+                [class.bg-gray-200]="!passwordFieldShown()"
+              ></span>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute left-0 inline-block size-5 transform rounded-full border border-gray-200 bg-white shadow ring-0 transition-transform duration-200 ease-in-out"
+                [class.translate-x-5]="passwordFieldShown()"
+                [class.translate-x-0]="!passwordFieldShown()"
+              ></span>
+            </button>
+            <span class="ml-3 text-sm" id="annual-billing-label">
+              <span class="font-medium text-gray-900"
+                >Protect link with password</span
+              >
+            </span>
+          </div>
+          @if(passwordFieldShown()) {
+          <div class="grid grid-cols-1">
+            <input
+              [type]="passwordInputShown() ? 'text' : 'password'"
+              name="account-number"
+              id="account-number"
+              class="col-start-1 row-start-1 block w-full rounded-md bg-white py-1.5 pl-3 pr-10 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-app-primary sm:pr-9 sm:text-sm/6"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <ng-icon
+              [name]="
+                !passwordInputShown() ? 'phosphorEye' : 'phosphorEyeSlash'
+              "
+              class="col-start-1 row-start-1 mr-3 self-center justify-self-end cursor-pointer"
+              color="#99a1af"
+              size="20"
+              (click)="togglePasswordInput()"
+            />
+          </div>
+          }
+        </div>
+        <div class="flex flex-col gap-6">
+          <div class="flex items-center">
+            <button
+              type="button"
+              class="group relative inline-flex h-5 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-app-primary focus:ring-offset-2"
+              role="switch"
+              aria-checked="false"
+              (click)="toggleExpirationDate()"
+            >
+              <span class="sr-only">Use setting</span>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute size-full rounded-md bg-white"
+              ></span>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out"
+                [class.bg-app-primary]="expirationDateShown()"
+                [class.bg-gray-200]="!expirationDateShown()"
+              ></span>
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute left-0 inline-block size-5 transform rounded-full border border-gray-200 bg-white shadow ring-0 transition-transform duration-200 ease-in-out"
+                [class.translate-x-5]="expirationDateShown()"
+                [class.translate-x-0]="!expirationDateShown()"
+              ></span>
+            </button>
+            <span class="ml-3 text-sm" id="annual-billing-label">
+              <span class="font-medium text-gray-900"
+                >Set an expiration date</span
+              >
+            </span>
+          </div>
+          @if(expirationDateShown()) {
+          <div class="grid grid-cols-1">
+            <input
+              type="date"
+              [min]="todaysDate()"
+              name="expiresAt"
+              id="expiresAt"
+              appInput
+              formControlName="expiresAt"
+            />
+          </div>
+          }
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="mt-5 sm:mt-4 flex gap-2 flex-col sm:flex-row-reverse">
+    <button
+      appButtonPrimary
+      type="button"
+      class="w-full sm:w-auto"
+      [disabled]="!createShareLinkForm.valid"
+      (click)="createShareLink()"
+    >
+      Create
+    </button>
+    <button
+      appButtonSecondary
+      class="w-full sm:w-auto cursor-pointer"
+      (click)="ref.close()"
+      type="button"
+    >
+      Cancel
+    </button>
+  </div>
+</div>

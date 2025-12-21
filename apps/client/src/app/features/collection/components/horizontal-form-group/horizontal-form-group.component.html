@@ -1,0 +1,17 @@
+<div
+  class="space-y-2 px-4 sm:grid sm:grid-cols-5 sm:gap-4 sm:space-y-0 sm:px-6 sm:py-5"
+>
+  <div class="sm:col-span-2">
+    <div>
+      <label
+        [for]="labelFor()"
+        class="block text-sm/6 font-medium text-gray-900 sm:mt-1.5"
+        >{{ label() }} {{ required() ? '*' : '' }}</label
+      >
+      <p class="text-sm text-gray-500">{{ description() }}</p>
+    </div>
+  </div>
+  <div class="sm:col-span-3">
+    <ng-content></ng-content>
+  </div>
+</div>
