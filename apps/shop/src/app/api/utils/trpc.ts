@@ -21,7 +21,7 @@ export class trpcUtils {
   public client = createTRPCClient<AppRouter>({
     links: [
       httpBatchLink({
-        url: 'http://localhost:6060/trpc',
+        url: 'http://localhost:3333/trpc',
         headers: () => {
           return {
             Authorization: `Bearer ${this.authToken()}`
