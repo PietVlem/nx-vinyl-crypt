@@ -1,27 +1,23 @@
-import { CommonModule } from '@angular/common';
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, signal, untracked } from '@angular/core';
 import {
-    FormControl,
-    FormGroup,
-    FormsModule,
-    ReactiveFormsModule,
-    Validators,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
-import { Condition } from '@client/core/models';
-import { DrawerService } from '@client/core/services';
-import type { DrawerContext } from '@client/core/services/drawer.service';
-import { DRAWER_CONTEXT_TOKEN } from '@client/core/services/drawer.service';
-import { UserVinylRecordService } from '@client/features/collection/data-access';
-import { SelectsHelpersService } from '@client/features/collection/helpers';
-import { DrawerBaseComponent } from '@client/layouts';
-import { SelectComponent } from '@client/shared/components';
-import {
-    ButtonPrimaryDirective,
-    ButtonSecondaryDirective,
-    StylingInputDirective,
-} from '@client/shared/directives';
-import { imgUrlValidator } from '@client/shared/utils/validators';
 import dayjs from 'dayjs';
+import { Condition } from '../../../../core/models/condition.enum';
+import { IdValue } from '../../../../core/models/id-value.model';
+import { DRAWER_CONTEXT_TOKEN, DrawerContext, DrawerService } from '../../../../core/services/drawer.service';
+import { SelectComponent } from '../../../../shared/components/select/select.component';
+import { ButtonPrimaryDirective } from '../../../../shared/directives/button-primary.directive';
+import { ButtonSecondaryDirective } from '../../../../shared/directives/button-secondary.directive';
+import { StylingInputDirective } from '../../../../shared/directives/styling-input.directive';
+import { DrawerBaseComponent } from '../../../../shared/layouts/drawer-base/drawer-base.component';
+import { imgUrlValidator } from '../../../../shared/utils/validators';
+import { UserVinylRecordService } from '../../data-access/services/user-vinyl-record.service';
+import { SelectsHelpersService } from '../../helpers/selects.helpers.service';
 import { HorizontalFormGroupComponent } from '../horizontal-form-group/horizontal-form-group.component';
 
 @Component({
@@ -29,7 +25,6 @@ import { HorizontalFormGroupComponent } from '../horizontal-form-group/horizonta
   imports: [
     DrawerBaseComponent,
     ReactiveFormsModule,
-    CommonModule,
     FormsModule,
     StylingInputDirective,
     ButtonPrimaryDirective,
@@ -45,28 +40,53 @@ export class DetailsFormComponent {
   public selectsHelpersService = inject(SelectsHelpersService);
   public drawerService = inject(DrawerService);
 
+  action = signal<'add' | 'edit'>('add');
+
   getVinylRecordByIdQuery = this.userVinylRecordService.getVinylRecordById(
     this.contextValue.data?.id ?? ''
   );
   createVinylRecordMutation = this.userVinylRecordService.createVinylRecord(
     () => this.drawerService.hide()
   );
+  editVinylRecordMutation = this.userVinylRecordService.editVinylRecord(
+    () => this.drawerService.hide()
+  );
 
   vinylCreationForm = new FormGroup({
     /* user vinyl */
-    condition: new FormControl<Condition>(Condition.Mint),
+    condition: new FormControl<IdValue>({ id: 'mint', value: Condition.Mint }),
     notes: new FormControl<string>(''),
-    purchaseDate: new FormControl<Date | null>(null),
+    purchaseDate: new FormControl<string | null>(null),
     /* vinyl */
     title: new FormControl<string>('', [Validators.required]),
-    artistId: new FormControl<string>(''),
-    genreId: new FormControl<string>('', [Validators.required]),
-    styleId: new FormControl<string>(''),
+    artist: new FormControl<IdValue | null>(null),
+    genre: new FormControl<IdValue | null>(null, [Validators.required]),
+    style: new FormControl<IdValue | null>(null),
     /* vinyl variant */
-    releaseDate: new FormControl<Date | null>(null, [Validators.required]),
+    releaseDate: new FormControl<string | null>(null, [Validators.required]),
     coverImage: new FormControl<string>('', imgUrlValidator),
     recordColor: new FormControl<string>(''),
   });
+
+  updateVinyl = () => {
+    if (this.vinylCreationForm.invalid) {
+      this.vinylCreationForm.markAllAsTouched();
+      return;
+    }
+
+    if (!this.contextValue.data?.id) return;
+
+    this.editVinylRecordMutation.mutate({
+      id: this.contextValue.data.id,
+      ...this.vinylCreationForm.value,
+      artistId: this.vinylCreationForm.value.artist?.id,
+      genreId: this.vinylCreationForm.value.genre?.id,
+      styleId: this.vinylCreationForm.value.style?.id,
+      condition: this.vinylCreationForm.value.condition?.id,
+      releaseDate: dayjs(this.vinylCreationForm.value.releaseDate).toDate(),
+      purchaseDate: this.vinylCreationForm.value.purchaseDate ? dayjs(this.vinylCreationForm.value.purchaseDate).toDate() : undefined,
+    });
+  }
 
   addVinyl = () => {
     if (this.vinylCreationForm.invalid) {
@@ -76,22 +96,26 @@ export class DetailsFormComponent {
 
     this.createVinylRecordMutation.mutate({
       ...this.vinylCreationForm.value,
-      releaseDate:
-        dayjs(this.vinylCreationForm.value.releaseDate).toDate() ?? undefined,
-      purchaseDate:
-        dayjs(this.vinylCreationForm.value.purchaseDate).toDate() ?? undefined,
+      artistId: this.vinylCreationForm.value.artist?.id,
+      genreId: this.vinylCreationForm.value.genre?.id,
+      styleId: this.vinylCreationForm.value.style?.id,
+      condition: this.vinylCreationForm.value.condition?.id,
+      releaseDate: dayjs(this.vinylCreationForm.value.releaseDate).toDate(),
+      purchaseDate: this.vinylCreationForm.value.purchaseDate ? dayjs(this.vinylCreationForm.value.purchaseDate).toDate() : undefined,
     });
   };
 
   onGetVinylRecordByIdQueryEffect = effect(() => {
-    this.getVinylRecordByIdQuery.isLoading()
-      ? this.vinylCreationForm.disable()
-      : this.vinylCreationForm.enable();
+    if (!this.contextValue.data?.id) return;
 
-    console.log(
-      'Fetched vinyl record by ID:',
-      this.getVinylRecordByIdQuery.data()
-    );
+    untracked(() => this.action.set('edit'))
+
+    if (this.getVinylRecordByIdQuery.isLoading()) {
+      this.vinylCreationForm.disable();
+    } else {
+      this.vinylCreationForm.enable();
+    }
+
     const data = this.getVinylRecordByIdQuery.data();
     if (data) {
       const {
@@ -101,19 +125,19 @@ export class DetailsFormComponent {
           releaseDate,
           coverImage,
           recordColor,
-          vinyl: { title, artistId, genreId, styleId },
+          vinyl: { title, artistId, artist, genre, style },
         },
       } = data;
 
       this.vinylCreationForm.patchValue({
-        condition: Condition.Mint,
+        condition: this.selectsHelpersService.conditionSelectOptions().find(option => option.id === data.condition),
         notes: notes ?? '',
-        purchaseDate: purchaseDate ? new Date(purchaseDate) : null,
+        purchaseDate: purchaseDate ? dayjs(purchaseDate).format('YYYY-MM-DD') : null,
         title: title ?? '',
-        artistId: artistId ?? '',
-        genreId: genreId ?? '',
-        styleId: styleId ?? '',
-        releaseDate: releaseDate ? new Date(releaseDate) : null,
+        artist: artistId ? { id: artistId, value: artist?.aliases?.[0]?.name ?? '' } : null,
+        genre: genre ? { id: genre.id, value: genre.name } : null,
+        style: style ? { id: style.id, value: style.name } : null,
+        releaseDate: releaseDate ? dayjs(releaseDate).format('YYYY-MM-DD') : null,
         coverImage: coverImage ?? '',
         recordColor: recordColor ?? '',
       });

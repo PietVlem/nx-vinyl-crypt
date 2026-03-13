@@ -1,7 +1,6 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, computed, inject } from '@angular/core';
-import { NotificationComponent } from '@client/core/components';
-import { NotificationService } from '@client/core/services';
+import { NotificationComponent } from '../notification/notification.component';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-notifications-container',
@@ -21,24 +20,30 @@ import { NotificationService } from '@client/core/services';
       display: flex;
       flex-direction: column;
       gap: 1rem;
-    }`,
-  animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(20px)' }),
-        animate(
-          '300ms ease-out',
-          style({ opacity: 1, transform: 'translateX(0)' })
-        ),
-      ]),
-      transition(':leave', [
-        animate(
-          '300ms ease-in',
-          style({ opacity: 0, transform: 'translateX(20px)' })
-        ),
-      ]),
-    ]),
-  ],
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+    }
+    `,
 })
 export class NotificationsContainerComponent {
   private notificationService = inject(NotificationService);

@@ -6,17 +6,21 @@
 #
 FROM docker.io/node:lts-alpine
 
-ENV HOST=0.0.0.0
-ENV PORT=3333
-
+# ENV HOST=0.0.0.0
+# ENV PORT=3333
+# ENV AUTH0_AUDIENCE=${AUTH0_AUDIENCE}
+# ENV AUTH0_DOMAIN=${AUTH0_DOMAIN}
+# ENV DATABASE_URL=${DATABASE_URL}
 
 WORKDIR /app
 
 COPY dist .
+COPY prisma ./prisma
 
 # You can remove this install step if you build with `--bundle` option.
 # The bundled output will include external dependencies.
 
 RUN npm --omit=dev -f install
+RUN npx prisma generate --no-engine
 
 CMD [ "node", "main.js" ]

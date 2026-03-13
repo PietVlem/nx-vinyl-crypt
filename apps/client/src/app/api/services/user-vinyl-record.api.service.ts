@@ -33,4 +33,9 @@ export class UserVinylRecordApiService {
     input: RouterInput['userVinyl']['delete']
   ): Promise<RouterOutput['userVinyl']['delete']> =>
     this.trpcUtils.client.userVinyl.delete.mutate(input);
+
+  editVinylRecord = async (
+    input: RouterInput['userVinyl']['edit']
+  ): Promise<RouterOutput['userVinyl']['edit']> =>
+    this.trpcUtils.client.userVinyl.edit.mutate(input);
 }

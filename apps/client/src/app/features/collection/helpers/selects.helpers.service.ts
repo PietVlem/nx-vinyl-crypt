@@ -1,11 +1,9 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { Condition } from '@client/core/models';
-import {
-    ArtistService,
-    GenreService,
-    StyleService,
-} from '@client/features/collection/data-access';
-import { debouncedSignal } from '@client/shared/utils/signal-utils';
+import { Condition } from '../../../core/models/condition.enum';
+import { debouncedSignal } from '../../../shared/utils/signal-utils';
+import { ArtistService } from '../data-access/services/artist.service';
+import { GenreService } from '../data-access/services/genre.service';
+import { StyleService } from '../data-access/services/style.service';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +25,7 @@ export class SelectsHelpersService {
   /* Styles */
   private styleService = inject(StyleService);
 
+  presetStyleValues = signal<string[]>([]);
   styleSearchValue = signal<string>('');
   searchForStyle = debouncedSignal(this.styleSearchValue, 500);
 

@@ -6,26 +6,18 @@ import {
     inject,
     input,
     model,
-    OnInit,
     signal,
     viewChild,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormsModule } from '@angular/forms';
-import {
-    ClickOutsideDirective,
-    StylingInputDirective,
-} from '@client/shared/directives';
+import { ClickOutsideDirective } from '../../directives/click-outside.directive';
+import { StylingInputDirective } from '../../directives/styling-input.directive';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
     phosphorCaretUpDown,
     phosphorCheck,
 } from '@ng-icons/phosphor-icons/regular';
-
-export interface SelectOption {
-  id: string;
-  value: string;
-}
+import { IdValue } from '../../../core/models/id-value.model';
 
 @Component({
   selector: 'app-select',
@@ -33,12 +25,12 @@ export interface SelectOption {
   templateUrl: './select.component.html',
   providers: [provideIcons({ phosphorCaretUpDown, phosphorCheck })],
 })
-export class SelectComponent implements OnInit {
+export class SelectComponent {
   private destroyRef = inject(DestroyRef);
 
-  control = input.required<FormControl<string | null>>();
+  control = input.required<FormControl<IdValue | null>>();
   searchable = input<boolean>(false);
-  options = input<SelectOption[]>([]);
+  options = input<IdValue[]>([]);
   loading = input<boolean>(false);
   placeholder = input<string>('');
   createFn = input<((data: { value: string }) => void) | undefined>(undefined);
@@ -48,22 +40,6 @@ export class SelectComponent implements OnInit {
   readonly searchInput = viewChild<ElementRef<HTMLInputElement>>('searchInput');
 
   open = signal<boolean>(false);
-  selectedLabel = signal<string>('');
-
-  ngOnInit(): void {
-    this.setSelectedLabel();
-
-    this.control()
-      .statusChanges.pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(() => this.setSelectedLabel());
-  }
-
-  setSelectedLabel = () => {
-    this.selectedLabel.set(
-      this.options().find((option) => option.id === this.control().value)
-        ?.value || ''
-    );
-  };
 
   close = () => this.open.set(false);
 
@@ -72,8 +48,8 @@ export class SelectComponent implements OnInit {
     this.control().markAsTouched();
   };
 
-  selectOption = (option: SelectOption) => {
-    this.control().setValue(option.id);
+  selectOption = (option: IdValue) => {
+    this.control().setValue(option);
     this.control().markAsDirty();
     this.close();
   };

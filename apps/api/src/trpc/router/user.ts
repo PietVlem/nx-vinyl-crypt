@@ -18,8 +18,6 @@ export const userRouter = trpc.router({
             where: { auth0Id }
         })
 
-        console.log('Fetching user with auth0Id:', user);
-
         if (user) { return user }
 
         const newUser = await prisma.user.create({
@@ -30,9 +28,7 @@ export const userRouter = trpc.router({
             },
         })
 
-        console.log('New user created:', newUser);
-
-        if(!newUser) {
+        if (!newUser) {
             throw new TRPCError({
                 code: 'INTERNAL_SERVER_ERROR',
                 message: 'Failed to fetch the user from the database.',

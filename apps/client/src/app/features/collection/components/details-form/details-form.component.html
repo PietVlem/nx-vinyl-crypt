@@ -3,7 +3,6 @@
   description="Get started by filling in the information below to add your new vinyl."
 >
   <ng-container drawer-content>
-    {{ vinylCreationForm.value | json }}
     <form
       [formGroup]="vinylCreationForm"
       class="space-y-6 py-6 sm:space-y-0 sm:divide-y sm:divide-gray-200 sm:py-0"
@@ -33,7 +32,7 @@
         <div class="grid grid-cols-1">
           <app-select
             placeholder="Taylor Swift"
-            [control]="vinylCreationForm.controls.artistId"
+            [control]="vinylCreationForm.controls.artist"
             [searchable]="true"
             [options]="selectsHelpersService.artistSelectOptions()"
             [loading]="selectsHelpersService.artistQuery.isLoading()"
@@ -52,7 +51,7 @@
         <app-select
           [options]="selectsHelpersService.genreSelectOptions()"
           placeholder="Country"
-          [control]="vinylCreationForm.controls.genreId"
+          [control]="vinylCreationForm.controls.genre"
         />
       </app-horizontal-form-group>
 
@@ -64,7 +63,7 @@
       >
         <div class="grid grid-cols-1">
           <app-select
-            [control]="vinylCreationForm.controls.styleId"
+            [control]="vinylCreationForm.controls.style"
             [searchable]="true"
             [options]="selectsHelpersService.styleSelectOptions()"
             [loading]="selectsHelpersService.stylesQuery.isLoading()"
@@ -125,7 +124,6 @@
         label="Purchase date"
         labelFor="year"
         description="The release year of the record."
-        [required]="true"
       >
         <input
           appInput
@@ -168,14 +166,14 @@
   </ng-container>
   <ng-container drawer-actions>
     <button appButtonSecondary type="button" (click)="drawerService.hide()">
-      Cancel creation
+      Cancel {{ action() === 'add' ? 'creation' : 'editing' }}
     </button>
     <button
       appButtonPrimary
       [disabled]="!vinylCreationForm.valid"
-      (click)="addVinyl()"
+      (click)="action() === 'add' ? addVinyl() : updateVinyl()"
     >
-      Add record
+      {{ action() === 'add' ? 'Add' : 'Edit' }} record
     </button>
   </ng-container>
 </app-layout-drawer-base>

@@ -1,3 +1,7 @@
 @for(notification of notifications(); track notification.id) {
-<app-notification [notification]="notification" @fadeInOut />
+<app-notification
+  [notification]="notification"
+  animate.enter="fadeIn"
+  animate.leave="fadeOut"
+/>
 }

@@ -1,11 +1,11 @@
 import { inject, Injectable, Signal } from '@angular/core';
-import { UserVinylRecordApiService } from '@client/api';
-import { NotificationService } from '@client/core/services';
 import {
-    injectMutation,
-    injectQuery,
-    QueryClient,
+  injectMutation,
+  injectQuery,
+  QueryClient,
 } from '@tanstack/angular-query-experimental';
+import { UserVinylRecordApiService } from '../../../../api/services/user-vinyl-record.api.service';
+import { NotificationService } from '../../../../core/services/notification.service';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +26,7 @@ export class UserVinylRecordService {
     injectQuery(() => ({
       queryKey: ['userVinylRecord', id],
       queryFn: () => this.userVinylRecordApiService.getVinylRecordById({ id }),
+      enabled: !!id,
     }));
 
   deleteVinylRecords = () =>
@@ -50,6 +51,20 @@ export class UserVinylRecordService {
         this.notificationService.success(
           'Successfully created!',
           'Your vinyl record has been successfully added.'
+        );
+        successCallback();
+      },
+    }));
+
+  editVinylRecord = (successCallback: () => void) =>
+    injectMutation(() => ({
+      mutationFn: (vinylRecord: any) =>
+        this.userVinylRecordApiService.editVinylRecord(vinylRecord),
+      onSuccess: () => {
+        this.queryClient.invalidateQueries({ queryKey: ['userVinylRecords'] });
+        this.notificationService.success(
+          'Successfully edited!',
+          'Your vinyl record has been successfully updated.'
         );
         successCallback();
       },

@@ -6,7 +6,6 @@
   "private": true,
   "dependencies": {
     "@angular-devkit/build-angular": "20.3.6",
-    "@angular/animations": "^20.3.6",
     "@angular/cdk": "^20.2.14",
     "@angular/common": "20.3.6",
     "@angular/compiler": "20.3.6",

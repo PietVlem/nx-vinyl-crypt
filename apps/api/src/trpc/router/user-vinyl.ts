@@ -5,6 +5,14 @@ import { prisma } from '../../prisma/prismaClient';
 import { protectedProcedure } from '../middleware';
 import { trpc } from '../trpc';
 
+const conditions = [
+    Condition.mint,
+    Condition.very_good,
+    Condition.good,
+    Condition.fair,
+    Condition.poor
+]
+
 export const userVinylRouter = trpc.router({
     get: protectedProcedure.input(
         z.object({
@@ -94,7 +102,34 @@ export const userVinylRouter = trpc.router({
             include: {
                 variant: {
                     include: {
-                        vinyl: true
+                        vinyl: {
+                            include: {
+                                artist: {
+                                    select: {
+                                        aliases: {
+                                            select: {
+                                                name: true
+                                            },
+                                            where: {
+                                                isPrimary: true,
+                                            }
+                                        },
+                                    }
+                                },
+                                genre: {
+                                    select: {
+                                        id: true,
+                                        name: true,
+                                    }
+                                },
+                                style: {
+                                    select: {
+                                        id: true,
+                                        name: true,
+                                    }
+                                },
+                            }
+                        }
                     }
                 }
             }
@@ -129,7 +164,7 @@ export const userVinylRouter = trpc.router({
     }),
     create: protectedProcedure.input(
         z.object({
-            condition: z.nativeEnum(Condition),
+            condition: z.enum([Condition.mint, Condition.very_good, Condition.good, Condition.fair, Condition.poor]),
             purchaseDate: z.string().optional(),
             notes: z.string().optional(),
             title: z.string(),
@@ -195,5 +230,87 @@ export const userVinylRouter = trpc.router({
         return {
             message: 'Vinyl record has been created successfully',
         }
-    })
+    }),
+    edit: protectedProcedure.input(
+        z.object({
+            id: z.string(),
+            condition: z.enum(conditions),
+            purchaseDate: z.string().optional(),
+            notes: z.string().optional(),
+            title: z.string(),
+            artistId: z.string().optional(),
+            styleId: z.string().optional(),
+            genreId: z.string().optional(),
+            releaseDate: z.string(),
+            coverImage: z.string().optional(),
+            recordColor: z.string().optional(),
+        })
+    ).mutation(async ({ input }) => {
+        const userVinyl = await prisma.userVinyl.update({
+            where: { id: input.id },
+            data: {
+                condition: input.condition,
+                purchaseDate: input.purchaseDate || null,
+                notes: input.notes || null,
+            },
+            include: {
+                variant: {
+                    select: {
+                        id: true,
+                    }
+                }
+            }
+        })
+
+        if (!userVinyl) {
+            throw new TRPCError({
+                code: 'INTERNAL_SERVER_ERROR',
+                message: 'Failed to update vinyl record in the database.',
+            });
+        }
+
+        const variant = await prisma.vinylVariant.update({
+            where: { id: userVinyl.variant.id },
+            data: {
+                releaseDate: input.releaseDate,
+                coverImage: input.coverImage || null,
+                recordColor: input.recordColor || null,
+            },
+            include: {
+                vinyl: {
+                    select: {
+                        id: true,
+                    }
+                }
+            }
+        })
+
+        if (!variant) {
+            throw new TRPCError({
+                code: 'INTERNAL_SERVER_ERROR',
+                message: 'Failed to update vinyl variant in the database.',
+            });
+        }
+
+        const vinyl = await prisma.vinylRecord.update({
+            where: { id: variant.vinyl.id },
+            data: {
+                title: input.title,
+                artist: input.artistId ? { connect: { id: input.artistId } } : undefined,
+                style: input.styleId ? { connect: { id: input.styleId } } : undefined,
+                genre: input.genreId ? { connect: { id: input.genreId } } : undefined,
+            }
+        })
+
+        if (!vinyl) {
+            throw new TRPCError({
+                code: 'INTERNAL_SERVER_ERROR',
+                message: 'Failed to update vinyl record in the database.',
+            });
+        }
+
+        return {
+            message: 'Vinyl record has been updated successfully',
+        }
+    }),
 })

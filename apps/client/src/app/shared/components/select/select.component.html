@@ -7,9 +7,9 @@
     aria-expanded="true"
     aria-labelledby="listbox-label"
   >
-    @if(selectedLabel()) {
+    @if(control().value?.value) {
     <span class="col-start-1 row-start-1 truncate pr-6">{{
-      selectedLabel()
+      control().value?.value || ''
     }}</span>
     } @else if(placeholder()) {
     <span class="col-start-1 row-start-1 truncate pr-6 text-gray-400">{{
@@ -56,10 +56,10 @@
     >
       <span
         class="block truncate font-normal"
-        [class.font-semibold]="option.id === control().value"
+        [class.font-semibold]="option.id === control().value?.id"
         >{{ option.value }}</span
       >
-      @if(option.id === control().value) {
+      @if(option.id === control().value?.id) {
       <span class="absolute inset-y-0 right-0 flex items-center pr-4">
         <ng-icon size="20" name="phosphorCheck" />
       </span>

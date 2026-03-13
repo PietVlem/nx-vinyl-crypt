@@ -68,6 +68,11 @@
     },
     "docker:build": {
       "dependsOn": ["build"]
+    },
+    "docker:run": {
+      "options": {
+        "args": ["-p", "3000:3333"]
+      }
     }
   }
 }
