@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   auth0: {
     domain: 'dev-1moar0eefmcqieuq.us.auth0.com',
     clientId: 'qkbZsRcB8zwTp70SxLa6vzkZ4iayqfCv',
@@ -10,6 +10,6 @@ export const environment = {
     errorPath: '/callback',
   },
   api: {
-    serverUrl: 'http://localhost:3000',
+    serverUrl: 'http://192.168.215.2:3000',
   },
 };

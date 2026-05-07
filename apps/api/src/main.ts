@@ -4,7 +4,7 @@ import { createContext } from './trpc/context';
 import { appRouter } from './trpc/router';
 
 const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3333;
+const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 const app = express();
 
@@ -25,8 +25,8 @@ app.get('/', (req, res) => {
   res.send({ message: 'Hello API' });
 });
 
-app.use('/trpc', trpcExpress.createExpressMiddleware({ 
-  router: appRouter, 
+app.use('/trpc', trpcExpress.createExpressMiddleware({
+  router: appRouter,
   createContext
 }));
 

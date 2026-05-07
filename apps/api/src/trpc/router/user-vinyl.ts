@@ -164,7 +164,7 @@ export const userVinylRouter = trpc.router({
     }),
     create: protectedProcedure.input(
         z.object({
-            condition: z.enum([Condition.mint, Condition.very_good, Condition.good, Condition.fair, Condition.poor]),
+            condition: z.enum(conditions),
             purchaseDate: z.string().optional(),
             notes: z.string().optional(),
             title: z.string(),

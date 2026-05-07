@@ -6,7 +6,7 @@
   "tags": ["scope:api"],
   "release": {
     "docker": {
-      "repositoryName": "org/angular-template-api"
+      "repositoryName": "PietVlem/nx-vinyl-crypt"
     }
   },
   "targets": {
@@ -71,7 +71,7 @@
     },
     "docker:run": {
       "options": {
-        "args": ["-p", "3000:3333"]
+        "args": ["-p", "3000:3000"]
       }
     }
   }

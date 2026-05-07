@@ -49,6 +49,9 @@
     "projectsRelationship": "independent",
     "docker": {
       "skipVersionActions": true
+    },
+    "changelog": {
+      "projectChangelogs": true
     }
   },
   "plugins": [
